@@ -1,0 +1,49 @@
+<html lang="en">
+    <head>
+        <% include ../partials/head %>
+    </head>
+    <body class="container">
+        <header>
+            <% include ../partials/header %>
+        </header>
+
+        <main>
+            <div class="row">
+                <div class="col-sm-4">
+
+                    <div class="well">
+                        <button style="width:100%;height:50px"><a href="/food/add">Home</a></button>
+                        <button style="width:100%;height:50px" ><a href="/food/delete">Home </button>
+                    </div>
+
+                </div>
+                <div class="col-sm-8">
+                    
+                    <div class="jumbotron">
+
+                    <%data.forEach( function( data ){ %>
+                    <pre>
+                            <p><%= data.type %></p>
+                            <p><%= data.description %></p>
+                            <p><%= data.price %></p>
+                            <% i=Date.now(); %>
+                            <% a = data.created; %> 
+                            <% c = Date.parse(a);%>
+                            <% e= i-c; %>
+                            <%add = Math.round(Math.abs(e/(1000*60*60*24)));%> 
+                            <p> <%= add %> days ago this item was added </p> 
+                    </pre> <% }); %>  
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+
+        <footer>
+            <% include ../partials/footer %>
+        </footer>
+
+    </body>
+</html>
+
